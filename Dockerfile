@@ -21,15 +21,12 @@ RUN apk --update add --no-cache --update \
 	php5-curl \
 	php5-gd \
 	php5-xml \
-	php5-dom ;
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
-    chmod +x /usr/local/bin/composer;
-RUN composer global require hirak/prestissimo
-RUN rm -rf /var/cache/apk/*
-RUN mkdir -p /var/www
+	php5-dom ;\
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
+    chmod +x /usr/local/bin/composer; \
+    composer global require hirak/prestissimo;\
+    rm -rf /var/cache/apk/*;\
+    mkdir -p /var/www
+
 WORKDIR /var/www
-COPY . /var/www
-VOLUME /var/www
-CMD ["/bin/sh"]
-EXPOSE 80 9000
 ENTRYPOINT ["/bin/sh", "-c"]
