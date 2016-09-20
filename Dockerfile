@@ -1,0 +1,35 @@
+FROM alpine:3.4
+MAINTAINER Amrit G.C. <amrit.gc@introcept.co>
+
+RUN apk --update add --no-cache --update \
+	curl \
+	php5-cli \
+	php5-common \
+	php5-fpm \
+	php5-phar \
+	php5-pdo \
+	php5-json \
+	php5-openssl \
+	php5-mysql \
+	php5-pdo_mysql \
+	php5-mcrypt \
+	php5-opcache \
+	php5-sqlite3 \
+	php5-pdo_sqlite \
+	php5-ctype \
+	php5-zlib \
+	php5-curl \
+	php5-gd \
+	php5-xml \
+	php5-dom ;
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
+    chmod +x /usr/local/bin/composer;
+RUN composer global require hirak/prestissimo
+RUN rm -rf /var/cache/apk/*
+RUN mkdir -p /var/www
+WORKDIR /var/www
+COPY . /var/www
+VOLUME /var/www
+CMD ["/bin/sh"]
+EXPOSE 80 9000
+ENTRYPOINT ["/bin/sh", "-c"]
