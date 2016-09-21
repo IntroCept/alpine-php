@@ -3,6 +3,7 @@ MAINTAINER Amrit G.C. <amrit.gc@introcept.co>
 
 RUN apk --update add --no-cache --update \
 	curl \
+	bash \
 	python \
 	php5-cli \
 	php5-common \
