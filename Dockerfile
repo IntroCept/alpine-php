@@ -29,6 +29,6 @@ RUN apk --update add --no-cache --update \
     composer global require hirak/prestissimo;\
     rm -rf /var/cache/apk/*;\
     mkdir -p /var/www
-
+COPY config/zzz-custom.ini /etc/php/conf.d/
 WORKDIR /var/www
 ENTRYPOINT ["/bin/sh", "-c"]
