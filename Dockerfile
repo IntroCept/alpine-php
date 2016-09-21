@@ -5,6 +5,7 @@ RUN apk --update add --no-cache --update \
 	curl \
 	bash \
 	wget \
+	git \
 	openssl \
 	python \
 	php5-cli \
