@@ -1,38 +1,37 @@
-FROM alpine:3.4
+FROM alpine:edge
 MAINTAINER Amrit G.C. <amrit.gc@introcept.co>
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk --update add --no-cache --update \
+RUN apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
 	curl \
 	bash \
 	wget \
 	git \
 	openssl \
 	python \
-	php-cli \
-	php-common \
-	php-fpm \
-	php-phar \
-	php-pdo \
-	php-json \
-	php-openssl \
-	php-mysql \
-	php-pdo_mysql \
-	php-mcrypt \
-	php-opcache \
-	php-sqlite3 \
-	php-pdo_sqlite \
-	php-ctype \
-	php-zlib \
-	php-curl \
-	php-gd \
-	php-xml \
-	php-dom ;\
+	php7 \
+	php7-common \
+	php7-fpm \
+	php7-phar \
+	php7-pdo \
+	php7-json \
+	php7-openssl \
+	php7-pdo \
+	php7-pdo_mysql \
+	php7-mcrypt \
+	php7-opcache \
+	php7-sqlite3 \
+	php7-pdo_sqlite \
+	php7-ctype \
+	php7-zlib \
+	php7-curl \
+	php7-gd \
+	php7-xml \
+	php7-dom ;\
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
     chmod +x /usr/local/bin/composer; \
     composer global require hirak/prestissimo;\
     rm -rf /var/cache/apk/*;\
     mkdir -p /var/www
-COPY config/zzz-custom.ini /etc/php/conf.d/
+COPY config/zzz-custom.ini /etc/php7/conf.d/
 WORKDIR /var/www
 ENTRYPOINT ["/bin/sh", "-c"]
