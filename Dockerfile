@@ -19,6 +19,7 @@ RUN apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing ad
 	php7-iconv \
 	php7-pdo_mysql \
 	php7-mcrypt \
+	php7-mbstring \
 	php7-opcache \
 	php7-sqlite3 \
 	php7-pdo_sqlite \
