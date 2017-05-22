@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.5
 MAINTAINER Amrit G.C. <amrit.gc@introcept.co>
 
 RUN apk --update add --no-cache --update \
@@ -32,6 +32,8 @@ RUN apk --update add --no-cache --update \
     composer global require hirak/prestissimo;\
     rm -rf /var/cache/apk/*;\
     mkdir -p /var/www
+    
+RUN apk del .build-dependencies
 COPY config/zzz-custom.ini /etc/php5/conf.d/
 WORKDIR /var/www
 ENTRYPOINT ["/bin/sh", "-c"]
