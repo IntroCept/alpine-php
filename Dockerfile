@@ -33,7 +33,6 @@ RUN apk --update add --no-cache --update \
     rm -rf /var/cache/apk/*;\
     mkdir -p /var/www
     
-RUN apk del .build-dependencies
 COPY config/zzz-custom.ini /etc/php5/conf.d/
 WORKDIR /var/www
 ENTRYPOINT ["/bin/sh", "-c"]
