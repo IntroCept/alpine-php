@@ -28,6 +28,7 @@ RUN apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing ad
 	php7-curl \
 	php7-gd \
 	php7-xml \
+	php7-xdebug \
 	php7-dom ;\
     ln -s /usr/bin/php7 /usr/bin/php; \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
